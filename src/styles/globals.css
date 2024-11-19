@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --almost-black: 0, 0%, 8%;
-    --light-green: 154, 71%, 59%;
+    --almost-black: 0, 0%, 20%;
+    --light-green: 154, 100%, 59%;
     --dark-gray: 0, 0%, 14%;
-    --light-gray: 0, 0%, 85%;
+    --light-gray: 68, 85%, 90%;
 
     /* Shadcn variables -> */
     --background: 0 0% 100%;

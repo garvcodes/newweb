@@ -12,143 +12,80 @@ import { getTechnologyLogo } from "@/data/tags-logo-matcher";
 
 const timelineElements = [
   {
-    title: "Freelance Web Developer",
-    subtitle: "Fiverr",
-    date: "November 2022 – Present",
+    title: "Software Development Engineering Intern",
+    subtitle: "Amazon, Sunnyvale, CA",
+    date: "May 2024",
     icon: <Icons.work />,
-
     bulletPoints: [
-      `Achieved 100% client satisfaction.`,
-      `Developed Blute - a full-stack web application designed to enhance communication between clinic staff
-    and healthcare students during their clinical placement training. The application serves as a digital journal for students to document their experiences in real-time and
-    output visualization of key indicators on the dashboard.`,
-      `Developed a web app designed to empower students with knowledge of prompt engineering using the OpenAI platform.`,
+      "Created Integration and Load Testing CI/CD frameworks for new FireTV Ad Stack plugins, using Java to write tests on temporary Lambda compute.",
+      "Developed a validation pipeline for FireTV Ads Plugins to add packages to FireTV’s Setu, Amazon’s internal tool for ad customization. Monitored CPU, memory, and latency metrics during plugin integration testing.",
+      "Implemented a Funnel View to visualize request and response loss across the ad stack, aiding engineers in identifying problem areas.",
+    ],
+    technologies: ["Java", "System Design", "AWS", "Testing"],
+  },
+  {
+    title: "Full-Stack Development Intern",
+    subtitle: "Cair Health (YC23), San Francisco, CA",
+    date: "January 2024 - May 2024",
+    icon: <Icons.work />,
+    bulletPoints: [
+      "Developed and deployed a FHIR server for secure patient data storage, ensuring compliance with HIPAA and interoperability with hospital EHR systems.",
+      "Led the development of a front-end interface for a RAG model used in hospital billing offices, enhancing the UX with React, TailwindCSS, and Chart.js.",
     ],
     technologies: [
       "JavaScript",
-      "TypeScript",
+      "Python",
+      "C++",
+      "AWS S3",
       "React",
-      "Next.js",
-      "Redux",
-      "Prisma ORM",
-      "MongoDB",
-      "Git",
-      "Tailwind CSS",
-      "Framer motion",
-      "CSS Modules",
-      "SurveyJS",
-    ],
-  },
-  {
-    title: "C# Software Engineer",
-    subtitle: "Self-employed",
-    date: "March 2016 – October 2022 (6 years 8 months)",
-    icon: <Icons.work />,
-    description: "",
-    bulletPoints: [
-      "Developed from scratch a system that allows to collect and analyze information about all domain names in the .ru zone (about 5,000,000 domain names)",
-      "The system includes an MS SQL database (more than 50 relational tables), a .Net core 3.1 Razor pages web application for managing and monitoring, about 10 docker containers for collecting data independently from external APIs and parsing websites by Selenium web driver.",
-      "The web application includes forms for CRUD operations processed by Entity Framework, API interface for connecting with the docker containers and transfer data by JSON, dashboard with main metrics and built-in authentication service.",
-    ],
-    mainDuties: [],
-    technologies: [
-      "C#",
-      ".Net core",
-      "Entity Framework",
-      "MS SQL Server",
-      "T-SQL",
-      "Git",
-      "Docker",
-      "Selenium",
-      "Razor Pages",
-      "JavaScript",
+      "TailwindCSS",
       "Chart.js",
-      "Bootstrap",
     ],
   },
   {
-    title: "IT Consultant",
-    subtitle:
-      "Self-employed, Joint-Stock Company “Project Development Institute No.1”",
-    date: "September 2017 - August 2019 (2 years)",
+    title: "Research Intern",
+    subtitle: "UCSF Medical AI Initiative, San Francisco, CA",
+    date: "August 2023 - February 2024",
     icon: <Icons.work />,
-    description:
-      "Successfully provided advice on information systems issues and modified to customer needs digital document management software for an organization with 100 employees.",
-    bulletPoints: [],
-    mainDuties: [
-      "Information support, provision of consultations on the installation and configuration of digital document management “1C Document Management”",
-      "Conducting technical studies at the request of the users on modification and improvement of the system",
-      "Testing and implementing information systems business solutions, quality control, stability and system availability and updating the information base",
-      "Implementing maintenance procedures to maximize the efficiency of the information system",
-    ],
-    technologies: [
-      "1C Enterprise",
-      "1C programming language",
-      "MS SQL Server",
-      "T-SQL",
-    ],
-  },
-  {
-    title: "Lead Engineer",
-    subtitle: "Joint-Stock Company “Project Development Institute No.1”",
-    date: "May 2015 - August 2017 (2 years 4 months)",
-    icon: <Icons.work />,
-    description: "",
-    mainDuties: [
-      "Implemented and modified to customer needs digital document management software for 4 organizations with a number of employees from 20 to 150.",
-      "This software reduced the average time for approval of documentation within the organization from 7 to 2 days because of role-based routes, made generating new documents more than 3 times faster because of using pre-installed templates, and made searching for a document instantaneous.",
-      "Main duties included “1C Document Management” setup, maintenance and development business solutions using 1C programming language embedded in the “1C Enterprise” platform. Managing, monitoring and maintaining MS SQL Server databases, ensuring database security, stability and system availability. Maintaining databases backup and recovery infrastructure",
-    ],
-    technologies: [
-      "1C Enterprise",
-      "1C Document Management",
-      "1C programming language",
-      "MS SQL Server",
-      "T-SQL",
-      "VBA",
-    ],
-  },
-  {
-    title: "Technical Support Engineer",
-    subtitle:
-      "FGKU North-West territorial administration of the property relations",
-    date: "December 2010 - April 2015 (4 years 5 months)",
-    icon: <Icons.work />,
-    description: "",
     bulletPoints: [
-      "Made a significant contribution to increasing the productivity of the organization by proactive monitoring, optimizing and upgrading hardware, software and related computer equipment",
-      "Implemented and customized digital document management system “E1 Evfrat”, which helped the company boost cooperation between all departments and optimized the workload of the staff",
+      "Implemented an IVR system using Amazon Connect, AWS Lex, and OpenAI API to create an AI phone agent for patient pre-consultations.",
+      "Optimized patient journeys by collaborating with neurologists and analyzing consultation responses, focusing on head injuries.",
     ],
-    mainDuties: [
-      "Research, diagnosis, troubleshooting, and resolving customer issues with software and hardware",
-      "Maintaintanance and co-ordination local and global networks hardware, software and related computer equipment",
-      "Installation, maintenance, troubleshooting and upgrading database server hardware and software",
+    technologies: ["AWS Lex", "Azure OpenAI API", "Prompt Engineering"],
+  },
+  {
+    title: "Student Researcher",
+    subtitle: "Innovative Genomics Institute, Berkeley, CA",
+    date: "October 2024 - Present",
+    icon: <Icons.work />,
+    bulletPoints: [
+      "Utilized advanced protein prediction models like AlphaFold and Raygun to minimize protein candidates.",
+      "Conducted experiments in a wet lab to test functionality and stability of designed proteins.",
     ],
     technologies: [
-      "Linux",
-      "Windows Server",
-      "Active Directory",
-      "Group Policy",
-      "E1 Evfrat",
-      "1C Enterprise",
-      "MS SQL Server",
+      "Protein Prediction Models",
+      "AlphaFold",
+      "BindCraft",
+      "Raygun",
+      "Wet Lab Testing",
     ],
   },
   {
-    title:
-      "Bachelor’s and Master’s degree in Aircraft Control Systems Engineering",
-    subtitle: "Baltic State Technical University VOENMEH",
-    date: "September 2008 - June 2014 (6 years)",
+    title: "B.S. in Computer Science and Molecular Cell Biology",
+    subtitle: "University of California, Berkeley",
+    date: "August 2022 – May 2026 (Expected)",
     icon: <Icons.education />,
-    description:
-      "The educational program was focused on modeling processes occurring in radio-electronic systems, maintenance of complex computerized radio-electronic systems, a detailed study of microprocessor technology, programmable logic integrated circuits and on-board computers.",
-    visible: true,
+    bulletPoints: [
+      "Relevant Coursework: Structure of Computer Programming, Data Structures, Organic Chemistry, Discrete Mathematics/Probability Theory, Integrated-Circuit Devices, Optimization Models, Natural Language Processing, Efficient Algorithms and Intractable Problems, Computer Architecture.",
+      "Student Organizations: Medical Technology at Berkeley, Disabled Students Program, Yoga, Soccer.",
+    ],
   },
 ];
 
 export function TimelineBlock() {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [animated, setAnimated] = useState(false);
+
   useEffect(() => {
     if (isMobile) {
       setAnimated(false);
@@ -156,6 +93,7 @@ export function TimelineBlock() {
       setAnimated(true);
     }
   }, [isMobile, animated]);
+
   return (
     <div className="relative flex flex-col gap-10">
       <h2 className="responsive-heading-xl">Timeline</h2>
@@ -188,7 +126,6 @@ export function TimelineBlock() {
           >
             <h3 className="mb-1 text-xl">{element.title}</h3>
             <h4 className="mb-5 italic">{element.subtitle}</h4>
-            {element.description && <p>{element.description}</p>}
             {element.bulletPoints && (
               <ul>
                 {element.bulletPoints.map((bulletPoint, index) => (
@@ -197,18 +134,6 @@ export function TimelineBlock() {
                   </li>
                 ))}
               </ul>
-            )}
-            {element.mainDuties && element.mainDuties?.length > 0 && (
-              <>
-                <h4 className="mb-2 mt-5 text-lg font-bold">Main duties:</h4>
-                <ul>
-                  {element.mainDuties.map((mainDuty, index) => (
-                    <li className="list-inside list-disc" key={index}>
-                      {mainDuty}
-                    </li>
-                  ))}
-                </ul>
-              </>
             )}
             {element.technologies && element.technologies.length > 0 && (
               <>

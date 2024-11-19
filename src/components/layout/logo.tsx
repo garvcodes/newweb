@@ -8,9 +8,9 @@ export function Logo() {
         href="/"
         className="group w-fit whitespace-nowrap text-xl lowercase transition-colors hover:text-light-green md:text-heading-m "
       >
-        {siteConfig.logo}
+        garvgoswami
         <span className="text-light-green transition-colors group-hover:text-foreground">
-          .com
+          .tech
         </span>
       </Link>
     </div>
