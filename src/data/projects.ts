@@ -2,168 +2,45 @@ import kanbanImage from "~/project-screenshots/kanban-desk.png";
 import spaceImage from "~/project-screenshots/space-tourism.png";
 import passwordGenImage from "~/project-screenshots/password-generator.png";
 import inspirationalImg from "~/project-screenshots/inspirational-p.png";
-import dropdomainImg from "~/project-screenshots/dropdomains.png";
-import memoryGameImg from "~/project-screenshots/memory-game.png";
-import portfolioImg from "~/project-screenshots/portfolio-website.png";
+import trashtotreasure from "~/project-screenshots/trashtotreasure.jpg";
+import leedbudImg from "~/project-screenshots/leedbud.jpg";
+import scrapbookImg from "~/project-screenshots/scrapbookImg.jpg";
 import cybercapImg from "~/project-screenshots/cybercap.png";
 import bluteImg from "~/project-screenshots/blute.png";
 import { type ProjectData } from "@/components/main-page-blocks/projects/projects-block";
 
 export const projectsData: ProjectData[] = [
   {
-    title: "CyberCap AI Platform",
-    tags: [
-      "React",
-      "TypeScript",
-      "OpenAI API",
-      "Next.js",
-      "Tailwind CSS",
-      "NextAuth.js",
-      "PostgreSQL",
-      "Prisma ORM",
-      "React hook form",
-      "Docker",
-      "Cypress",
-      "GitHub Actions",
-      "S3",
-    ],
+    title: "Scrapbook",
+    tags: ["React", "Node.js", "Next.js", "CSS Modules"],
     links: {
-      projectInfo: "/cybercap",
-      livePreview: "",
-      github: "https://github.com/cybercap-sandbox/cybercap-app",
-    },
-    image: cybercapImg,
-  },
-  {
-    title: "Blute - Clinical placement tracker",
-    tags: [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "NextAuth.js",
-      "PostgreSQL",
-      "Prisma ORM",
-      "React hook form",
-      "Docker",
-      "SurveyJS",
-      "Recharts",
-    ],
-    links: {
-      projectInfo: "/blute",
-      livePreview: "",
-      github: "",
-    },
-    image: bluteImg,
-  },
-  {
-    title: "Space tourism",
-    tags: [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Framer motion",
-      "Playwright",
-      "Jest",
-    ],
-    links: {
-      projectInfo: "/space-tourism",
-      livePreview: "https://space-tourism.alexefimenko.com/",
+      projectInfo: "/scrapbook",
+      livePreview: "https://devpost.com/software/scrapbook-5h0f4v",
       github:
-        "https://github.com/aleksandr-efimenko/space-tourism-website-frontendmentor",
+        "https://devpost.com/software/scrapbook-5h0f4v",
     },
-    image: spaceImage,
+    image: scrapbookImg,
   },
   {
-    title: "Dropdomains",
-    tags: [
-      "C#",
-      ".Net core",
-      "Razor pages",
-      "RabbitMQ",
-      "MS SQL Server",
-      "Entity Framework ORM",
-      "Bootstrap",
-      "JavaScript",
-      "Chart.js",
-      "Docker",
-      "Selenium",
-    ],
+    title: "LEED Bud",
+    tags: ["React", "TypeScript", "OpenAI"],
     links: {
-      projectInfo: "/dropdomains",
-      livePreview: "",
-      github: "",
+      projectInfo: "/leed-bud",
+      livePreview: "https://devpost.com/software/leed-bud",
+      github: "https://devpost.com/software/leed-bud",
     },
-    image: dropdomainImg,
-  },
-  {
-    title: "Kanban Desk",
-    tags: [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "MongoDB",
-      "Prisma ORM",
-      "NextAuth.js",
-    ],
-    links: {
-      projectInfo: "/kanban-desk",
-      livePreview: "https://kanban-desk.alexefimenko.com/",
-      github: "https://github.com/aleksandr-efimenko/kanban-task-management/",
-    },
-    image: kanbanImage,
-  },
-  {
-    title: "Portfolio website",
-    tags: [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Framer motion",
-      "React hook form",
-    ],
-    links: {
-      projectInfo: "/portfolio-website",
-      livePreview: "https://alexefimenko.com/",
-      github:
-        "https://github.com/aleksandr-efimenko/personal-portfolio-website",
-    },
-    image: portfolioImg,
-  },
-  {
-    title: "Password generator",
-    tags: ["React", "TypeScript", "Next.js", "CSS Modules"],
-    links: {
-      projectInfo: "/password-generator",
-      livePreview: "https://password-generator.alexefimenko.com/",
-      github:
-        "https://github.com/aleksandr-efimenko/password-generator-frontendmentor",
-    },
-    image: passwordGenImage,
-  },
-  {
-    title: "Inspirational page",
-    tags: ["React", "Redux", "TypeScript", "Firebase"],
-    links: {
-      projectInfo: "/inspirational-page",
-      livePreview: "https://inspirational-page.alexefimenko.com/",
-      github: "https://github.com/aleksandr-efimenko/inspirational-homepage",
-    },
-    image: inspirationalImg,
+    image: leedbudImg,
   },
 
   {
-    title: "Memory game",
-    tags: ["React", "JavaScript", "CSS Modules"],
+    title: "TrashToTreasure - Sustainable Showcase",
+    tags: ["React", "JavaScript", "CSS Modules", "Next.js", "MongoDB", "Express.JS"],
     links: {
-      projectInfo: "/memory-game",
-      livePreview: "https://memory-game.alexefimenko.com/",
-      github: "https://github.com/aleksandr-efimenko/memory_game_react",
+      projectInfo: "/trash-to-treasure",
+      livePreview: "https://devpost.com/software/trashtotreasure-sustainable-showcase",
+      github: "https://devpost.com/software/trashtotreasure-sustainable-showcase",
     },
-    image: memoryGameImg,
+    image: trashtotreasure,
   },
 ];
 

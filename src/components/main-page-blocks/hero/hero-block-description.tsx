@@ -2,21 +2,14 @@ import { motion } from "framer-motion";
 import { StyledLink } from "../../ui/styled-link";
 
 const pageData = {
-  title: "Nice to meet you!",
-  subtitle: "I'm ",
-  subtitleHighlight: "Alex Efimenko",
+  title: "Hey! My name's",
+  subtitle: "",
+  subtitleHighlight: "Garv Goswami",
   subtitleEnd: ".",
   description:
-    "I'm a Full-stack Developer passionate about building accessible web apps that users love.",
+    "I'm a student researcher and software engineer with expertise in full-stack development and bioinformatics, hoping to innovate at the intersection of technology and the life sciences.",
   links: [
-    {
-      label: "Contact me",
-      href: "#contact",
-    },
-    {
-      label: "Book a call with me on Calendly",
-      href: "https://calendly.com/alexefimenko/introductory-call",
-    },
+
   ],
 };
 
@@ -89,11 +82,8 @@ export function HeroDescription() {
 
         <p className="flex w-fit gap-5 text-base uppercase tracking-widest text-foreground md:text-body lg:text-xl">
           {"Download CV:"}
-          <StyledLink data-cy={"cvPdf"} href="/Resume_Alexander_Efimenko.pdf">
+          <StyledLink data-cy={"cvPdf"} href="/Garv_Goswami_Resume (26).pdf">
             {".PDF"}
-          </StyledLink>
-          <StyledLink data-cy={"cvDocx"} href="/Resume_Alexander_Efimenko.docx">
-            {".DOCX"}
           </StyledLink>
         </p>
       </motion.div>

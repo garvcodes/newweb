@@ -23,7 +23,7 @@ export default function Index({ allPosts }: Props) {
         
         <div className = "p-80">
 
-          <h1> New posts coming soon! Studying for finals...</h1>
+  
 
         </div>
       </Container>

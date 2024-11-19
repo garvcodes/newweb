@@ -87,14 +87,10 @@ export function ProjectCard(props: ProjectData) {
       </div>
       <div className="mt-4 flex gap-5 lg:hidden">
         <>
-          {links.livePreview && (
-            <StyledLink href={links.livePreview} onNewTab={true}>
-              Visit site
-            </StyledLink>
-          )}
+          
           {links.github && (
             <StyledLink href={links.github} onNewTab={true}>
-              Github repo
+              Devpost
             </StyledLink>
           )}
           {!links.livePreview && !links.github && (

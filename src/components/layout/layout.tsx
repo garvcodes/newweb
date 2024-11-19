@@ -8,7 +8,7 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Head>
-        <meta name="description" content="Alex Efimenko personal website" />
+        <meta name="description" content="Garv Goswami personal website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main

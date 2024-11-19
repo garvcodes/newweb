@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --almost-black: 0, 0%, 20%;
-    --light-green: 154, 100%, 59%;
+    --light-green: 220, 100%, 75%;
     --dark-gray: 0, 0%, 14%;
     --light-gray: 68, 85%, 90%;
 
@@ -37,7 +37,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 215 20.2% 65.1%;
+    --ring: 120 20.2% 65.1%;
 
     --radius: 0.5rem;
   }
@@ -74,7 +74,7 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
 
-    --ring: 217.2 32.6% 17.5%;
+    --ring: 220 32.6% 17.5%;
   }
 }
 
@@ -154,7 +154,7 @@ pre:has(.hljs) {
 .hljs-addition,
 .hljs-attribute,
 .hljs-meta .hljs-string {
-  @apply text-[#50a14f] dark:text-[#98c379];
+  @apply text-[#5d83b9] dark:text-[#6392c7];
 }
 
 .hljs-attr,

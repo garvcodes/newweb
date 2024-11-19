@@ -1,11 +1,11 @@
 export const siteConfig = {
-  logo: "AlexEfimenko",
-  title: "Alex Efimenko personal site",
-  url: "https://alexefimenko.com",
+  logo: "GarvGoswami",
+  title: "Garv Goswami's personal site",
+  url: "https://garvgoswami.tech",
   links: {
-    github: "https://github.com/aleksandr-efimenko",
-    linkedin: "https://www.linkedin.com/in/aleksandr-efimenko/",
+    github: "https://github.com/garvcodes",
+    linkedin: "https://www.linkedin.com/in/garv-goswami/",
     devto: "https://dev.to/alexefimenko",
   },
-  email: "mail@alexefimenko.com",
+  email: "garvgoswami@berkeley.edu",
 };

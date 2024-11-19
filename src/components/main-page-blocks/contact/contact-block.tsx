@@ -4,10 +4,10 @@ import Link from "next/link";
 import patternDots from "~/pattern-dots.svg";
 
 const blockDescription = {
-  title: "Contact",
+  title: "Contact Me",
   description:
-    "I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to you as soon as possible.",
-  email: "mail@alexefimenko.com",
+    "I'd love to talk to you!",
+  email: "garvgoswami@berkeley.edu",
 };
 
 export function ContactBlock() {
@@ -37,12 +37,9 @@ export function ContactBlock() {
         >
           {blockDescription.email}
         </Link>
-        <Link
-          href={"https://calendly.com/alexefimenko/introductory-call"}
-          className="text-center text-body text-foreground underline md:text-left"
-        >
-          Book a call with me on Calendly
-        </Link>
+
+        <p>Thank you to aleksandr-efimenko for this website template!</p>
+
       </div>
       <div className="flex-1">
         <ContactForm />

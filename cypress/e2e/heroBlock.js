@@ -8,7 +8,7 @@ describe("main page", () => {
   });
 
   it("contains the correct title", () => {
-    cy.title().should("contain", "Alex Efimenko");
+    cy.title().should("contain", "Garv Goswami");
   });
 
   it("displays the header", () => {
@@ -25,7 +25,7 @@ describe("main page", () => {
     // link to pdf file contains .PDF
     cy.get("@cvPdf").contains(".PDF");
     // check if the link has proper href
-    cy.get("@cvPdf").should("have.attr", "href", "/CV_Aleksandr_Efimenko.pdf");
+    cy.get("@cvPdf").should("have.attr", "href", "/Garv_Goswami_Resume(26).pdf");
 
     cy.get("@cvPdf")
       .should("have.attr", "href")
@@ -43,7 +43,7 @@ describe("main page", () => {
     cy.get("@cvDocx").should(
       "have.attr",
       "href",
-      "/Resume_Alexander_Efimenko.docx"
+      "/Garv_Goswami_Resume(26).pdf"
     );
 
     cy.get("@cvDocx")
