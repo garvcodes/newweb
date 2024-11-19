@@ -109,7 +109,7 @@ export function TimelineBlock() {
       >
         {timelineElements.map((element, index) => (
           <VerticalTimelineElement
-            visible={element.visible ?? false}
+          
             key={index}
             contentStyle={{
               background: "hsl(var(--muted))",

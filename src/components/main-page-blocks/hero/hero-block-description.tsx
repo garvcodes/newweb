@@ -74,11 +74,7 @@ export function HeroDescription() {
         transition={{ duration: 0.5, delay: 1.5 }}
         className="flex flex-col items-center gap-3 md:items-start"
       >
-        {pageData.links.map((link) => (
-          <StyledLink href={link.href} key={link.href}>
-            {link.label}
-          </StyledLink>
-        ))}
+    
 
         <p className="flex w-fit gap-5 text-base uppercase tracking-widest text-foreground md:text-body lg:text-xl">
           {"Download CV:"}
