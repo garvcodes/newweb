@@ -7,7 +7,7 @@ const pageData = {
   subtitleHighlight: "Garv Goswami",
   subtitleEnd: ".",
   description:
-    "I'm a student researcher and software engineer with expertise in full-stack development and bioinformatics, hoping to innovate at the intersection of technology and the life sciences.",
+    "I'm a student researcher and software engineer with working knowledge in full-stack development and bioinformatics, hoping to innovate at the intersection of technology and the life sciences. Currently, I'm a student researcher at the Innovative Genomics Institute in Berkeley.",
   links: [
 
   ],
@@ -77,7 +77,7 @@ export function HeroDescription() {
     
 
         <p className="flex w-fit gap-5 text-base uppercase tracking-widest text-foreground md:text-body lg:text-xl">
-          {"Download CV:"}
+          {"Download Resume:"}
           <StyledLink data-cy={"cvPdf"} href="/Garv_Goswami_Resume (26).pdf">
             {".PDF"}
           </StyledLink>
