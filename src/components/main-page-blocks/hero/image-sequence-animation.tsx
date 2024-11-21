@@ -33,7 +33,7 @@ export function ImageSequenceAnimation() {
   return (
     <div
       className="flex h-96 w-56 flex-col justify-end overflow-hidden rounded-3xl
-    bg-light-gray dark:bg-dark-gray md:h-[30rem] md:w-72 lg:h-[45rem] lg:w-[27rem]
+    bg-blue-300 dark:bg-dark-gray md:h-[30rem] md:w-72 lg:h-[45rem] lg:w-[27rem]
     "
     >
       {currentImageIndex === 0 ? (
