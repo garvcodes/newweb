@@ -1,11 +1,11 @@
 export const siteConfig = {
   logo: "GarvGoswami",
-  title: "Garv Goswami's personal site",
+  title: "Garv's Personal Site",
   url: "https://garvgoswami.tech",
   links: {
     github: "https://github.com/garvcodes",
     linkedin: "https://www.linkedin.com/in/garv-goswami/",
-    devto: "https://dev.to/alexefimenko",
+    devto: "",
   },
   email: "garvgoswami@berkeley.edu",
 };
