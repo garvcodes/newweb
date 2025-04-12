@@ -43,7 +43,7 @@ describe("main page", () => {
     cy.get("@cvDocx").should(
       "have.attr",
       "href",
-      "/Garv_Goswami_Resume(26).pdf"
+      "/Garv_Goswami_Resume(29) (1).pdf"
     );
 
     cy.get("@cvDocx")
