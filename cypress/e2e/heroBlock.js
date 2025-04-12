@@ -25,7 +25,7 @@ describe("main page", () => {
     // link to pdf file contains .PDF
     cy.get("@cvPdf").contains(".PDF");
     // check if the link has proper href
-    cy.get("@cvPdf").should("have.attr", "href", "/Garv_Goswami_Resume(26).pdf");
+    cy.get("@cvPdf").should("have.attr", "href", "/Garv_Goswami_Resume(29) (1).pdf");
 
     cy.get("@cvPdf")
       .should("have.attr", "href")
