@@ -12,6 +12,15 @@ import { getTechnologyLogo } from "@/data/tags-logo-matcher";
 
 const timelineElements = [
   {
+    title: "Software Engineering Intern",
+    subtitle: "Google, Mountainview, CA",
+    date: "May 2025",
+    icon: <Icons.work />,
+    bulletPoints: [
+      "Excited to get started this summer!",
+    ],
+  },
+  {
     title: "Software Development Engineering Intern",
     subtitle: "Amazon, Sunnyvale, CA",
     date: "May 2024",
