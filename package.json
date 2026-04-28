@@ -41,7 +41,7 @@
     "zod": "^3.21.4"
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "devDependencies": {
     "@types/eslint": "^8.37.0",
