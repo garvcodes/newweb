@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 0 0% 13%;
+
+    --muted: 40 20% 92%;
+    --muted-foreground: 0 0% 35%;
+
+    --rule: 30 15% 80%;
+    --accent-color: 4 47% 33%;
+
+    --popover: 40 33% 97%;
+    --popover-foreground: 0 0% 13%;
+
+    --card: 40 33% 97%;
+    --card-foreground: 0 0% 13%;
+
+    --border: 30 15% 80%;
+    --input: 30 15% 80%;
+
+    --primary: 0 0% 13%;
+    --primary-foreground: 40 33% 97%;
+
+    --secondary: 40 20% 92%;
+    --secondary-foreground: 0 0% 13%;
+
+    --accent: 4 47% 33%;
+    --accent-foreground: 40 33% 97%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 33% 97%;
+
+    --ring: 4 47% 33%;
+
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    --background: 30 8% 10%;
+    --foreground: 40 25% 92%;
+
+    --muted: 30 6% 17%;
+    --muted-foreground: 40 10% 70%;
+
+    --rule: 30 6% 25%;
+    --accent-color: 14 60% 60%;
+
+    --popover: 30 8% 10%;
+    --popover-foreground: 40 25% 92%;
+
+    --card: 30 8% 10%;
+    --card-foreground: 40 25% 92%;
+
+    --border: 30 6% 25%;
+    --input: 30 6% 25%;
+
+    --primary: 40 25% 92%;
+    --primary-foreground: 30 8% 10%;
+
+    --secondary: 30 6% 17%;
+    --secondary-foreground: 40 25% 92%;
+
+    --accent: 14 60% 60%;
+    --accent-foreground: 30 8% 10%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 40 25% 92%;
+
+    --ring: 14 60% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern", "liga", "calt", "onum";
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background-color: hsl(var(--accent-color) / 0.2);
+  }
+}
+
+@layer components {
+  .serif {
+    font-family: var(--font-serif);
+  }
+  .sans {
+    font-family: var(--font-sans);
+  }
+  .accent-link {
+    @apply text-[hsl(var(--accent-color))] underline decoration-[hsl(var(--accent-color)/0.4)] underline-offset-4 transition-colors hover:decoration-[hsl(var(--accent-color))];
+  }
+  .small-caps {
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Highlight.js — kept for blog code blocks */
+pre:has(.hljs) {
+  @apply overflow-auto rounded-md bg-[#fafafa] p-5 text-[#383a42] dark:bg-[#1f1d1b] dark:text-[#e7e3da];
+}
+.hljs-comment, .hljs-quote { @apply italic text-[#8a8780]; }
+.hljs-doctag, .hljs-keyword, .hljs-formula { @apply text-[#7a2e2e] dark:text-[#d98c6e]; }
+.hljs-section, .hljs-name, .hljs-selector-tag, .hljs-deletion, .hljs-subst { @apply text-[#7a2e2e] dark:text-[#d98c6e]; }
+.hljs-literal { @apply text-[#0184bb] dark:text-[#56b6c2]; }
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta .hljs-string { @apply text-[#5d83b9] dark:text-[#6392c7]; }
+.hljs-attr, .hljs-variable, .hljs-template-variable, .hljs-type, .hljs-selector-class, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-number { @apply text-[#a5701d] dark:text-[#d6b272]; }
+.hljs-symbol, .hljs-bullet, .hljs-link, .hljs-meta, .hljs-selector-id, .hljs-title { @apply text-[#4078f2] dark:text-[#9bb8e6]; }
+.hljs-built_in, .hljs-title.class_, .hljs-class .hljs-title { @apply text-[#986801] dark:text-[#e6c07b]; }
+.hljs-emphasis { @apply italic; }
+.hljs-strong { @apply font-bold; }
+.hljs-link { text-decoration: underline; }
