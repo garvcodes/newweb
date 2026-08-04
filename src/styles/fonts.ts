@@ -1,14 +1,17 @@
-import { EB_Garamond, Inter } from "next/font/google";
+import { Labrada } from "next/font/google";
 
-export const fontSerif = EB_Garamond({
+export const fontSerif = Labrada({
   subsets: ["latin"],
   variable: "--font-serif",
-  weight: ["400", "500", "600", "700"],
+  weight: "variable",
   style: ["normal", "italic"],
+  adjustFontFallback: false,
 });
 
-export const fontSans = Inter({
+export const fontSans = Labrada({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["300", "400", "500", "600"],
+  weight: "variable",
+  style: ["normal", "italic"],
+  adjustFontFallback: false,
 });

@@ -12,5 +12,5 @@ It will be difficult to move from this environment. What I'm afraid of, now that
 end is in sight, is the slow forgetting that tends to follow: the days
 filling up with busy work, my curiosity waning, forgetting how to be a student
 
-The resolution behind these posts isto learn something each day, and to leave short, or if the occasion warrants it, detailed notes about it here. The bar is deliberately low, so the point is  habit, rather than perfection. It serves as an effort to continue being a student until I'm hopefully back at Berkeley doing my PhD. It is also, quietly, a smoke test: I'm typing this on a new
+The resolution behind these posts is to learn something each day, and to leave short, or if the occasion warrants it, detailed notes about it here. The bar is deliberately low, so the point is  habit, rather than perfection. It serves as an effort to continue being a student until I'm hopefully back at Berkeley doing my PhD. It is also, quietly, a smoke test: I'm typing this on a new
 laptop, and if you're reading it, the move survived itself.

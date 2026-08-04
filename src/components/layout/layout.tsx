@@ -12,7 +12,8 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
           name="description"
           content="Garv Goswami — researcher and engineer at the intersection of machine learning and the life sciences."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </Head>
       <main
         className={cn(

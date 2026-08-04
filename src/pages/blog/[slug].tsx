@@ -39,6 +39,7 @@ export default function Post({ post }: Props) {
             title={post.title}
             coverImage={post.coverImage}
             date={post.date}
+            paperLink={post.paperLink}
           />
           <PostBody content={post.content} />
         </article>
@@ -61,8 +62,9 @@ export async function getStaticProps({ params }: Params) {
     "content",
     "ogImage",
     "coverImage",
+    "paperLink",
   ]);
-  const content = await markdownToHtml(post.content || "");
+  const content = await markdownToHtml(post.content || "", post.slug);
 
   const allPosts = getAllPosts([
     "title",

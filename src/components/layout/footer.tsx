@@ -6,8 +6,7 @@ export function Footer() {
     <footer className="border-t border-rule">
       <div className="container flex w-full flex-col items-center justify-between gap-3 py-8 sans text-xs text-muted-foreground md:flex-row">
         <p className="italic">
-          &copy; {new Date().getFullYear()} Garv Goswami. Set in EB Garamond
-          &amp; Inter.
+          &copy; {new Date().getFullYear()} Garv Goswami. Set in Labrada.
         </p>
         <div className="flex gap-5">
           <Link

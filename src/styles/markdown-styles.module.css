@@ -1,5 +1,6 @@
 .markdown {
   @apply text-lg leading-relaxed;
+  counter-reset: figure;
 }
 
 .markdown p,
@@ -28,13 +29,31 @@
   @apply mb-4 mt-8 text-3xl font-bold leading-snug;
 }
 
-.markdown ul,
+.markdown ul {
+  @apply list-disc pl-8;
+}
+
 .markdown ol {
-  @apply pl-8;
+  @apply list-decimal pl-8;
 }
 
 .markdown li {
-  @apply mb-2 list-disc;
+  @apply mb-3 pl-2;
+}
+
+.markdown ol > li::marker {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: hsl(var(--accent-color));
+  font-variant-numeric: tabular-nums;
+}
+
+.markdown ul > li::marker {
+  color: hsl(var(--accent-color));
+}
+
+.markdown li > p {
+  margin: 0.75rem 0;
 }
 
 .markdown a {
@@ -43,6 +62,26 @@
 
 .markdown blockquote {
   @apply border-l-4 border-gray-400 pl-4 italic;
+}
+
+.markdown strong {
+  @apply font-semibold text-foreground;
+}
+
+.markdown :global(.text-highlight) {
+  padding: 0.02em 0.12em;
+  color: inherit;
+  background-color: transparent;
+  background-image: linear-gradient(
+    104deg,
+    transparent 0.05em,
+    hsl(var(--accent-color) / 0.24) 0.05em,
+    hsl(var(--accent-color) / 0.24) calc(100% - 0.05em),
+    transparent calc(100% - 0.05em)
+  );
+  border-radius: 0.1em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .markdown table {
@@ -59,4 +98,508 @@
 
 .markdown hr {
   @apply my-8 border-t-2 border-gray-400;
+}
+
+.markdown figure {
+  @apply my-12;
+  counter-increment: figure;
+}
+
+.markdown figure img {
+  @apply w-full rounded-sm border border-rule;
+}
+
+.markdown figcaption {
+  @apply mx-auto mt-3 max-w-3xl text-center text-sm italic leading-relaxed text-muted-foreground;
+}
+
+.markdown figcaption::before {
+  @apply not-italic text-[hsl(var(--accent-color))];
+  content: "Fig. " counter(figure) " — ";
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+}
+
+.markdown :global(.tangent) {
+  position: relative;
+  margin: 3.5rem 0;
+  padding: 2.25rem clamp(0.25rem, 3vw, 2rem);
+  border-top: 2px solid hsl(var(--accent-color));
+  border-bottom: 2px solid hsl(var(--accent-color));
+}
+
+.markdown :global(.tangent)::before {
+  position: absolute;
+  top: 0;
+  left: clamp(0.25rem, 3vw, 2rem);
+  padding: 0 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  color: hsl(var(--accent-color));
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  content: "Tangent";
+  background-color: hsl(var(--background));
+  transform: translateY(-55%);
+}
+
+.markdown :global(.tangent) > :first-child {
+  margin-top: 0;
+}
+
+.markdown :global(.tangent) > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown :global(.where-we-left-off) {
+  position: relative;
+  margin: 4rem 0 3.5rem;
+  padding: 1.5rem clamp(1.25rem, 3vw, 2rem);
+  background: linear-gradient(
+    105deg,
+    hsl(var(--accent-color) / 0.11),
+    hsl(var(--accent-color) / 0.035) 62%,
+    transparent
+  );
+  border: 1px solid hsl(var(--accent-color) / 0.24);
+  border-left: 3px solid hsl(var(--accent-color));
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.markdown :global(.where-we-left-off)::before {
+  position: absolute;
+  top: -1.5rem;
+  left: -3px;
+  width: 2.5rem;
+  height: 1.5rem;
+  content: "";
+  border-top: 2px solid hsl(var(--accent-color));
+  border-left: 3px solid hsl(var(--accent-color));
+  border-top-left-radius: 1rem;
+}
+
+.markdown :global(.where-we-left-off)::after {
+  position: absolute;
+  top: -1.72rem;
+  left: 2rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  content: "";
+  border-top: 2px solid hsl(var(--accent-color));
+  border-right: 2px solid hsl(var(--accent-color));
+  transform: rotate(45deg);
+}
+
+.markdown :global(.where-we-left-off-label) {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: hsl(var(--accent-color));
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.markdown :global(.where-we-left-off-label)::before {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  content: "↩";
+}
+
+.markdown :global(.where-we-left-off) > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown :global(.research-question) {
+  position: relative;
+  isolation: isolate;
+  margin: 2.75rem 0;
+  padding: 1.75rem clamp(1.25rem, 4vw, 2.5rem);
+  overflow: hidden;
+  background: linear-gradient(
+    110deg,
+    hsl(var(--accent-color) / 0.1),
+    transparent 72%
+  );
+  border-left: 3px solid hsl(var(--accent-color));
+}
+
+.markdown :global(.research-question)::after {
+  position: absolute;
+  top: -1.25rem;
+  right: 0.75rem;
+  z-index: -1;
+  font-family: var(--font-serif);
+  font-size: 8rem;
+  line-height: 1;
+  color: hsl(var(--accent-color) / 0.08);
+  content: "?";
+}
+
+.markdown :global(.research-question-label),
+.markdown :global(.key-result-label),
+.markdown :global(.probability-bars-label) {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: hsl(var(--accent-color));
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.markdown :global(.research-question) > :last-child {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  line-height: 1.45;
+  color: hsl(var(--foreground));
+}
+
+.markdown :global(.example-data) {
+  margin: 2.75rem 0;
+}
+
+.markdown :global(.example-data) h4 {
+  margin: 0 0 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: hsl(var(--accent-color));
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.markdown :global(.example-data) table {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid hsl(var(--rule));
+  border-radius: 0.5rem;
+}
+
+.markdown :global(.example-data) table th {
+  padding: 0.7rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: hsl(var(--muted) / 0.7);
+  border: 0;
+  border-bottom: 1px solid hsl(var(--rule));
+}
+
+.markdown :global(.example-data) table td {
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  vertical-align: top;
+  border: 0;
+  border-bottom: 1px solid hsl(var(--rule) / 0.7);
+}
+
+.markdown :global(.example-data) table tr:last-child td {
+  border-bottom: 0;
+}
+
+.markdown :global(.example-data) code {
+  font-size: 0.82em;
+  color: hsl(var(--accent-color));
+}
+
+.markdown :global(.results-table) {
+  margin: 2.75rem 0;
+  overflow-x: auto;
+  scrollbar-color: hsl(var(--accent-color) / 0.45) transparent;
+  scrollbar-width: thin;
+}
+
+.markdown :global(.results-table) h4 {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 650;
+  line-height: 1.3;
+  color: hsl(var(--accent-color));
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.markdown :global(.results-table) table {
+  width: 100%;
+  min-width: 46rem;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid hsl(var(--rule));
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.55rem;
+}
+
+.markdown :global(.results-table) th,
+.markdown :global(.results-table) td {
+  padding: 0.58rem 0.65rem;
+  text-align: right;
+  white-space: nowrap;
+  border: 0;
+  border-bottom: 1px solid hsl(var(--rule) / 0.65);
+}
+
+.markdown :global(.results-table) th {
+  font-size: 0.66rem;
+  font-weight: 650;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  background: hsl(var(--muted) / 0.72);
+}
+
+.markdown :global(.results-table) th:first-child,
+.markdown :global(.results-table) td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 6.75rem;
+  font-weight: 550;
+  text-align: left;
+  background: hsl(var(--background));
+  box-shadow: 1px 0 hsl(var(--rule));
+}
+
+.markdown :global(.results-table) th:first-child {
+  z-index: 2;
+  background: hsl(var(--muted) / 0.96);
+}
+
+.markdown :global(.results-table) tbody tr:nth-child(even) td {
+  background: hsl(var(--muted) / 0.24);
+}
+
+.markdown :global(.results-table) tbody tr:nth-child(even) td:first-child {
+  background: hsl(var(--muted) / 0.24);
+}
+
+.markdown :global(.results-table) th:last-child,
+.markdown :global(.results-table) td:last-child {
+  font-weight: 650;
+  color: hsl(var(--foreground));
+  background: hsl(var(--accent-color) / 0.08);
+  border-left: 1px solid hsl(var(--accent-color) / 0.2);
+}
+
+.markdown :global(.results-table) tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.markdown :global(.results-table) strong {
+  font-weight: 750;
+  color: hsl(var(--accent-color));
+}
+
+.markdown :global(.results-table) > p:last-child {
+  max-width: 48rem;
+  margin: 0.8rem 0 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: hsl(var(--muted-foreground));
+}
+
+.markdown :global(.comparison-table) table {
+  min-width: 58rem;
+}
+
+.markdown :global(.comparison-table) th:first-child,
+.markdown :global(.comparison-table) td:first-child {
+  width: 100%;
+  min-width: 25rem;
+  white-space: normal;
+}
+
+.markdown :global(.comparison-table) tbody tr:nth-child(2) td,
+.markdown :global(.comparison-table) tbody tr:nth-child(4) td,
+.markdown :global(.comparison-table) tbody tr:nth-child(7) td,
+.markdown :global(.comparison-table) tbody tr:nth-child(11) td,
+.markdown :global(.comparison-table) tbody tr:nth-child(14) td {
+  border-bottom: 2px solid hsl(var(--rule));
+}
+
+.markdown :global(.comparison-table) :global(.metric-positive),
+.markdown :global(.comparison-table) :global(.metric-negative),
+.markdown :global(.comparison-table) :global(.metric-mixed) {
+  font-weight: 700;
+}
+
+.markdown :global(.comparison-table) :global(.metric-positive) {
+  color: hsl(145deg 58% 31%);
+}
+
+.markdown :global(.comparison-table) :global(.metric-negative) {
+  color: hsl(var(--accent-color));
+}
+
+.markdown :global(.comparison-table) :global(.metric-mixed) {
+  color: hsl(37deg 72% 34%);
+}
+
+.markdown :global(.key-result) {
+  margin: 3rem 0;
+  padding: 1.75rem clamp(1.25rem, 4vw, 2.5rem);
+  text-align: center;
+  border-top: 1px solid hsl(var(--accent-color) / 0.45);
+  border-bottom: 1px solid hsl(var(--accent-color) / 0.45);
+}
+
+.markdown :global(.key-result-label) {
+  margin-bottom: 0.25rem;
+}
+
+.markdown :global(.key-result) h3 {
+  margin: 0;
+  font-size: clamp(3.75rem, 10vw, 6.5rem);
+  font-weight: 500;
+  line-height: 1;
+  color: hsl(var(--accent-color));
+  letter-spacing: -0.04em;
+}
+
+.markdown :global(.key-result) > :last-child {
+  max-width: 34rem;
+  margin: 0.65rem auto 0;
+  font-size: 1rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.markdown :global(.probability-bars) {
+  margin: 2.75rem 0;
+  padding: 1.25rem clamp(1rem, 3vw, 1.5rem) 1.5rem;
+  background: hsl(var(--muted) / 0.45);
+  border-radius: 0.5rem;
+}
+
+.markdown :global(.probability-bars) table {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0 0.4rem;
+}
+
+.markdown :global(.probability-bars) table th {
+  padding: 0 0.75rem 0.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: transparent;
+  border: 0;
+}
+
+.markdown :global(.probability-bars) table td {
+  position: relative;
+  z-index: 0;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  background: transparent;
+  border: 0;
+}
+
+.markdown :global(.probability-row) {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--accent-color) / 0.2) 0,
+    hsl(var(--accent-color) / 0.2) var(--probability),
+    hsl(var(--background) / 0.75) var(--probability),
+    hsl(var(--background) / 0.75) 100%
+  );
+}
+
+.markdown :global(.probability-row) td:last-child {
+  width: 5rem;
+  font-weight: 600;
+  color: hsl(var(--accent-color));
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.markdown :global(.direct-quote) {
+  position: relative;
+  isolation: isolate;
+  margin: 3rem 0;
+  padding: 2.5rem clamp(1.5rem, 5vw, 3.5rem) 2rem;
+  overflow: hidden;
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-style: normal;
+  line-height: 1.55;
+  color: hsl(var(--foreground));
+  background: linear-gradient(
+    115deg,
+    hsl(var(--accent-color) / 0.09),
+    transparent 68%
+  );
+  border: 0;
+  border-bottom: 1px solid hsl(var(--accent-color) / 0.38);
+}
+
+.markdown :global(.direct-quote)::before {
+  position: absolute;
+  top: -1.15rem;
+  left: 0.5rem;
+  z-index: -1;
+  font-family: var(--font-serif);
+  font-size: 8.5rem;
+  line-height: 1;
+  color: hsl(var(--accent-color) / 0.18);
+  content: "“";
+}
+
+.markdown :global(.direct-quote)::after {
+  position: absolute;
+  right: 0;
+  bottom: -3.75rem;
+  font-family: var(--font-serif);
+  font-size: 8.5rem;
+  line-height: 1;
+  color: hsl(var(--accent-color) / 0.08);
+  content: "”";
+}
+
+.markdown :global(.direct-quote) p {
+  margin: 0;
+  font-size: inherit;
+}
+
+.markdown :global(.direct-quote-attribution) {
+  display: block;
+  margin-top: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 500;
+  color: hsl(var(--accent-color));
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+.markdown :global(.direct-quote-attribution) a {
+  color: inherit;
+  text-decoration-color: hsl(var(--accent-color) / 0.45);
+  text-underline-offset: 0.2em;
+}
+
+.markdown :global(.direct-quote-attribution) a:hover {
+  text-decoration-color: hsl(var(--accent-color));
 }
