@@ -108,6 +108,34 @@
     font-variant: small-caps;
     letter-spacing: 0.08em;
   }
+  .editorial-underline {
+    position: relative;
+    display: inline-block;
+    isolation: isolate;
+    color: hsl(var(--foreground));
+    font-weight: 500;
+  }
+  .editorial-underline::after {
+    position: absolute;
+    z-index: -1;
+    right: -0.08em;
+    bottom: -0.12em;
+    left: -0.08em;
+    height: 0.38em;
+    content: "";
+    background-color: hsl(var(--accent-color) / 0.7);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9C20 3 38 11 58 7S86 4 98 7' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M4 12C27 8 49 12 96 9' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9C20 3 38 11 58 7S86 4 98 7' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M4 12C27 8 49 12 96 9' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    transform: rotate(-1.2deg);
+    transform-origin: left center;
+  }
+  .editorial-underline:nth-of-type(even)::after {
+    transform: rotate(0.8deg) scaleX(0.98);
+  }
 }
 
 /* Highlight.js — kept for blog code blocks */
