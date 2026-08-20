@@ -8,15 +8,25 @@ import PostTitle from "@/components/blog/post-title";
 import Head from "next/head";
 import markdownToHtml from "../../lib/markdownToHtml";
 import type PostType from "../../interfaces/post";
+import Cas9ScrollStory from "@/components/blog/cas9-scroll-story";
 
 type Props = {
-  post: PostType;
+  post: PostType & {
+    contentBeforeAnimation?: string;
+    contentAfterAnimation?: string;
+  };
   morePosts: PostType[];
   preview?: boolean;
 };
 
+const cas9AnimationMarker = "<!-- cas9-animation -->";
+
 export default function Post({ post }: Props) {
   const router = useRouter();
+  const isCas9Walkthrough = post.slug === "how-crispr-spycas9-works";
+  const hasCas9PostSections = Boolean(
+    post.contentBeforeAnimation && post.contentAfterAnimation
+  );
 
   const title = `${post.title} | Garv Goswami`;
   if (!router.isFallback && !post?.slug) {
@@ -41,7 +51,18 @@ export default function Post({ post }: Props) {
             date={post.date}
             paperLink={post.paperLink}
           />
-          <PostBody content={post.content} />
+          {hasCas9PostSections ? (
+            <>
+              <PostBody content={post.contentBeforeAnimation ?? ""} />
+              <Cas9ScrollStory />
+              <PostBody content={post.contentAfterAnimation ?? ""} />
+            </>
+          ) : (
+            <>
+              {isCas9Walkthrough && <Cas9ScrollStory />}
+              <PostBody content={post.content} />
+            </>
+          )}
         </article>
       )}
     </Container>
@@ -64,7 +85,28 @@ export async function getStaticProps({ params }: Params) {
     "coverImage",
     "paperLink",
   ]);
-  const content = await markdownToHtml(post.content || "", post.slug);
+  const rawContent = post.content || "";
+  const splitIndex =
+    post.slug === "how-crispr-spycas9-works"
+      ? rawContent.indexOf(cas9AnimationMarker)
+      : -1;
+  let contentBeforeAnimation: string | undefined;
+  let contentAfterAnimation: string | undefined;
+
+  if (splitIndex >= 0) {
+    [contentBeforeAnimation, contentAfterAnimation] = await Promise.all([
+      markdownToHtml(rawContent.slice(0, splitIndex), post.slug),
+      markdownToHtml(
+        rawContent.slice(splitIndex + cas9AnimationMarker.length),
+        post.slug
+      ),
+    ]);
+  }
+
+  const content =
+    contentBeforeAnimation && contentAfterAnimation
+      ? `${contentBeforeAnimation}${contentAfterAnimation}`
+      : await markdownToHtml(rawContent, post.slug);
 
   const allPosts = getAllPosts([
     "title",
@@ -81,6 +123,9 @@ export async function getStaticProps({ params }: Params) {
       post: {
         ...post,
         content,
+        ...(contentBeforeAnimation && contentAfterAnimation
+          ? { contentBeforeAnimation, contentAfterAnimation }
+          : {}),
       },
     },
   };
