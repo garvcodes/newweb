@@ -1,0 +1,1368 @@
+/*
+ * Scroll-driven SpyCas9 plate.
+ * Protein domains are drawn as separate, cross-hatched shapes so the molecular
+ * roles remain legible while the scene changes from loading to DNA repair.
+ */
+
+.walkthrough {
+  --paper: #e9e0cd;
+  --paper-light: #f5eedf;
+  --ink: #2f3a38;
+  --rec-1: #79a3a2;
+  --rec-2: #9ab9b0;
+  --rec-3: #557f86;
+  --hnh: #8496ae;
+  --ruvc: #617e98;
+  --pi: #78958a;
+  --rna: #c76037;
+  --dna: #376e5f;
+  --cut: #a23e39;
+  margin: 3rem 0 5rem;
+}
+
+.intro {
+  max-width: 50rem;
+  margin-bottom: 2.5rem;
+}
+
+.intro .kicker {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: hsl(var(--accent-color));
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.intro h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.intro > p:last-child {
+  max-width: 43rem;
+  margin: 1.25rem 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  line-height: 1.55;
+  color: hsl(var(--muted-foreground));
+}
+
+.orientation {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0 0 3.5rem;
+  padding: clamp(1.3rem, 3vw, 2rem);
+  background: repeating-linear-gradient(
+      115deg,
+      transparent 0 12px,
+      hsl(var(--foreground) / 2.5%) 12px 13px
+    ),
+    hsl(var(--muted) / 48%);
+  border-top: 1px solid hsl(var(--rule));
+  border-bottom: 1px solid hsl(var(--rule));
+}
+
+.orientationCopy > p {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 750;
+  color: hsl(var(--accent-color));
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.orientationCopy h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.orientationCopy > span {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+}
+
+.orientationKey {
+  display: grid;
+  gap: 0;
+  align-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orientationKey li {
+  display: grid;
+  grid-template-columns: 1.35rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid hsl(var(--rule) / 75%);
+}
+
+.orientationKey li:last-child {
+  border-bottom: 0;
+}
+
+.orientationKey li > i {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.12rem;
+  border: 1px solid var(--ink);
+}
+
+.orientationKey li div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.orientationKey strong,
+.orientationKey span {
+  font-family: var(--font-sans);
+}
+
+.orientationKey strong {
+  font-size: 0.72rem;
+  color: hsl(var(--foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.orientationKey span {
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: hsl(var(--muted-foreground));
+}
+
+.proteinKey > i {
+  background: repeating-linear-gradient(
+      118deg,
+      transparent 0 4px,
+      rgb(47 58 56 / 30%) 4px 5px
+    ),
+    var(--rec-1);
+  border-radius: 52% 48% 58% 42%;
+}
+
+.rnaKey > i {
+  height: 0.35rem !important;
+  margin-top: 0.48rem !important;
+  background: var(--rna);
+  border-radius: 999px;
+}
+
+.dnaKey > i {
+  height: 0.75rem !important;
+  margin-top: 0.3rem !important;
+  background: linear-gradient(
+    to bottom,
+    var(--dna) 0 2px,
+    transparent 2px calc(100% - 2px),
+    var(--dna) calc(100% - 2px)
+  );
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(18rem, 0.78fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.visualColumn {
+  position: sticky;
+  top: 5.5rem;
+}
+
+.visual {
+  position: relative;
+  min-height: 37rem;
+  overflow: hidden;
+  color: var(--ink);
+  background: radial-gradient(
+      circle at 18% 14%,
+      rgb(255 255 255 / 70%),
+      transparent 28%
+    ),
+    radial-gradient(circle at 82% 84%, rgb(118 85 48 / 9%), transparent 32%),
+    var(--paper);
+  border: 2px solid rgb(47 58 56 / 58%);
+  border-radius: 0.7rem 1.05rem 0.75rem 1.2rem;
+  box-shadow: 0.45rem 0.62rem 0 rgb(47 58 56 / 11%),
+    0 1.75rem 4rem rgb(51 39 25 / 14%);
+}
+
+.visual::before,
+.visual::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.visual::before {
+  z-index: 1;
+  background: repeating-linear-gradient(
+      112deg,
+      transparent 0 8px,
+      rgb(47 58 56 / 3.5%) 8px 9px
+    ),
+    repeating-linear-gradient(
+      68deg,
+      transparent 0 13px,
+      rgb(47 58 56 / 2.2%) 13px 14px
+    );
+  mask-image: radial-gradient(ellipse at center, transparent 34%, black 94%);
+}
+
+.visual::after {
+  z-index: 30;
+  background-image: radial-gradient(
+    rgb(47 58 56 / 12%) 0.55px,
+    transparent 0.75px
+  );
+  background-size: 9px 9px;
+  mix-blend-mode: multiply;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+.visualHeader,
+.visualFooter {
+  position: absolute;
+  right: 1.25rem;
+  left: 1.25rem;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgb(47 58 56 / 64%);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.visualHeader {
+  top: 1.1rem;
+  justify-content: space-between;
+}
+
+.stageReadout {
+  color: rgb(47 58 56 / 88%);
+  font-variant-numeric: tabular-nums;
+}
+
+.visualFooter {
+  bottom: 1.1rem;
+  gap: 0.85rem;
+  font-size: 0.52rem;
+}
+
+.visualFooter span::before {
+  display: inline-block;
+  width: 0.48rem;
+  height: 0.48rem;
+  margin-right: 0.35rem;
+  vertical-align: 0.03rem;
+  content: "";
+  background: currentColor;
+  border: 1px solid rgb(47 58 56 / 40%);
+  border-radius: 999px;
+}
+
+.legendRec {
+  color: var(--rec-1);
+}
+
+.legendNuc {
+  color: var(--hnh);
+}
+
+.legendRna {
+  color: var(--rna);
+}
+
+.legendDna {
+  color: var(--dna);
+}
+
+.molecularScene {
+  position: absolute;
+  inset: 3.3rem 0.75rem 3.25rem;
+  z-index: 2;
+}
+
+/* DNA duplex */
+
+.dna {
+  position: absolute;
+  top: 58%;
+  left: 4%;
+  z-index: 9;
+  width: 92%;
+  height: 6.5rem;
+  opacity: 0.15;
+  transform: translateY(-50%) scaleX(0.9);
+  transition: opacity 600ms ease, transform 850ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dnaRail {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 0.34rem;
+  background: var(--dna);
+  border: 1px solid rgb(47 58 56 / 62%);
+  border-radius: 44% 56% 48% 52%;
+  box-shadow: 0 2px 0 rgb(47 58 56 / 17%), inset 0 1px rgb(245 238 223 / 35%);
+  transition: transform 750ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.topRail {
+  top: 1.25rem;
+  transform: rotate(-0.4deg);
+}
+
+.bottomRail {
+  bottom: 1.25rem;
+  transform: rotate(0.35deg);
+}
+
+.basePairs {
+  position: absolute;
+  inset: 1.48rem 4%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.basePairs span {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 3.35rem;
+  background: rgb(47 58 56 / 56%);
+  transition: height 650ms ease, transform 650ms ease, opacity 350ms ease;
+}
+
+.basePairs span:nth-child(3n + 1) {
+  transform: rotate(1.2deg);
+}
+
+.basePairs span:nth-child(3n + 2) {
+  transform: rotate(-1.4deg);
+}
+
+.basePairs i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0 0.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.48rem;
+  font-style: normal;
+  color: rgb(47 58 56 / 75%);
+  background: var(--paper);
+  transform: translate(-50%, -50%);
+}
+
+.strandLabel {
+  position: absolute;
+  left: 0;
+  font-family: var(--font-sans);
+  font-size: 0.47rem;
+  font-weight: 700;
+  color: rgb(47 58 56 / 72%);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+.targetLabel {
+  top: 0;
+}
+
+.nonTargetLabel {
+  bottom: 0;
+}
+
+.pam {
+  position: absolute;
+  top: 0.15rem;
+  right: 3.5%;
+  z-index: 14;
+  display: flex;
+  gap: 0.18rem;
+  padding: 0.27rem;
+  opacity: 0;
+  background: rgb(220 194 111 / 48%);
+  border: 1.5px solid rgb(83 68 36 / 65%);
+  border-radius: 0.35rem 0.5rem 0.32rem 0.45rem;
+  box-shadow: 2px 2px 0 rgb(47 58 56 / 13%);
+  transform: translateY(-0.75rem);
+  transition: opacity 400ms ease, transform 450ms ease;
+}
+
+.pam span,
+.pam strong {
+  display: grid;
+  width: 1.3rem;
+  height: 1.3rem;
+  place-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  color: var(--ink);
+  background: #dcc977;
+  border: 1px solid rgb(83 68 36 / 30%);
+  border-radius: 0.2rem;
+}
+
+.pam span {
+  opacity: 0.72;
+}
+
+.pam small {
+  position: absolute;
+  top: -1.15rem;
+  right: 0;
+  width: 5.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.48rem;
+  font-weight: 700;
+  color: rgb(75 58 27 / 85%);
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cutMarkA,
+.cutMarkB {
+  position: absolute;
+  right: 27%;
+  z-index: 15;
+  width: 1.7rem;
+  height: 0.32rem;
+  opacity: 0;
+  background: var(--cut);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 rgb(47 58 56 / 16%);
+  transform: rotate(-54deg) scaleX(0.2);
+  transition: opacity 300ms ease, transform 420ms ease;
+}
+
+.cutMarkA {
+  top: 1.05rem;
+}
+
+.cutMarkB {
+  bottom: 1.05rem;
+}
+
+/* Protein domain map */
+
+.cas9 {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  z-index: 7;
+  width: 25rem;
+  height: 22rem;
+  opacity: 0.56;
+  filter: drop-shadow(0.35rem 0.6rem 0 rgb(47 58 56 / 13%));
+  transform: translate(-50%, -50%) scale(0.83) rotate(-1.5deg);
+  transition: opacity 600ms ease, transform 850ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cas9::before {
+  position: absolute;
+  inset: -0.65rem -0.8rem;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background: rgb(70 106 119 / 4.5%);
+  border: 1.5px dashed rgb(47 78 85 / 50%);
+  border-radius: 42% 49% 45% 51% / 48% 44% 52% 46%;
+  transform: rotate(1deg);
+}
+
+.proteinGroupLabel {
+  position: absolute;
+  top: -1.65rem;
+  left: 50%;
+  z-index: 20;
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0.3rem 0.55rem;
+  color: #315865;
+  white-space: nowrap;
+  background: var(--paper-light);
+  border: 1px solid rgb(49 88 101 / 54%);
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 rgb(47 58 56 / 10%);
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.proteinGroupLabel strong,
+.proteinGroupLabel span {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.proteinGroupLabel strong {
+  font-size: 0.56rem;
+}
+
+.proteinGroupLabel span {
+  font-size: 0.42rem;
+  color: rgb(49 88 101 / 68%);
+}
+
+.domain {
+  position: absolute;
+  display: grid;
+  place-content: center;
+  padding: 0.5rem;
+  overflow: hidden;
+  color: var(--ink);
+  text-align: center;
+  border: 2px solid #304e56;
+  box-shadow: inset -0.8rem -1rem 1.2rem rgb(47 58 56 / 13%);
+  transition: transform 650ms ease, filter 450ms ease, opacity 450ms ease;
+}
+
+.domain::before,
+.domain::after {
+  position: absolute;
+  pointer-events: none;
+  content: "";
+}
+
+.domain::before {
+  inset: 0;
+  background: repeating-linear-gradient(
+      117deg,
+      transparent 0 7px,
+      rgb(38 49 48 / 23%) 7px 8px
+    ),
+    repeating-linear-gradient(
+      63deg,
+      transparent 0 14px,
+      rgb(38 49 48 / 11%) 14px 15px
+    );
+  mix-blend-mode: multiply;
+  mask-image: linear-gradient(135deg, transparent 9%, black 92%);
+}
+
+.domain::after {
+  inset: 0.7rem 0.8rem;
+  border: 1px solid rgb(47 58 56 / 37%);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-8deg);
+}
+
+.domain span,
+.domain small {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-sans);
+  text-shadow: 0 1px rgb(245 238 223 / 52%);
+}
+
+.domain span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.domain small {
+  max-width: 5.8rem;
+  margin-top: 0.25rem;
+  font-size: 0.46rem;
+  font-weight: 650;
+  line-height: 1.25;
+  color: rgb(37 48 47 / 75%);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rec1 {
+  top: 0.5rem;
+  left: 5.25rem;
+  width: 9rem;
+  height: 7.8rem;
+  background: var(--rec-1);
+  border-radius: 57% 43% 37% 63% / 45% 54% 46% 55%;
+  transform: rotate(-8deg);
+}
+
+.rec2 {
+  top: 6.5rem;
+  left: 0.45rem;
+  width: 7.5rem;
+  height: 8.4rem;
+  background: var(--rec-2);
+  border-radius: 52% 48% 61% 39% / 42% 55% 45% 58%;
+  transform: rotate(7deg);
+}
+
+.rec3 {
+  bottom: 0.1rem;
+  left: 4.7rem;
+  width: 9.5rem;
+  height: 8.5rem;
+  background: var(--rec-3);
+  border-radius: 47% 53% 43% 57% / 57% 43% 55% 45%;
+  transform: rotate(4deg);
+}
+
+.hnhDomain {
+  top: 0.85rem;
+  right: 4.7rem;
+  width: 7.1rem;
+  height: 6.5rem;
+  background: var(--hnh);
+  border-radius: 54% 46% 58% 42% / 48% 61% 39% 52%;
+  transform: rotate(8deg);
+}
+
+.ruvcDomain {
+  right: 4.1rem;
+  bottom: 0.3rem;
+  width: 9rem;
+  height: 8.6rem;
+  background: var(--ruvc);
+  border-radius: 43% 57% 52% 48% / 58% 41% 59% 42%;
+  transform: rotate(-6deg);
+}
+
+.piDomain {
+  top: 7.5rem;
+  right: 0.2rem;
+  width: 6.5rem;
+  height: 8rem;
+  background: var(--pi);
+  border-radius: 61% 39% 44% 56% / 44% 58% 42% 56%;
+  transform: rotate(-7deg);
+}
+
+.channel {
+  position: absolute;
+  top: 6.9rem;
+  left: 8.8rem;
+  z-index: 8;
+  display: grid;
+  width: 7.9rem;
+  height: 7.5rem;
+  place-items: end center;
+  padding-bottom: 0.6rem;
+  background: repeating-linear-gradient(
+      120deg,
+      transparent 0 7px,
+      rgb(47 58 56 / 10%) 7px 8px
+    ),
+    var(--paper-light);
+  border: 2px solid var(--ink);
+  border-radius: 47% 53% 58% 42%;
+  box-shadow: inset 0.5rem 0.6rem 1rem rgb(47 58 56 / 10%);
+  transform: rotate(-6deg);
+}
+
+.channel span {
+  font-family: var(--font-sans);
+  font-size: 0.43rem;
+  font-weight: 700;
+  color: rgb(47 58 56 / 65%);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.bridgeHelix {
+  position: absolute;
+  top: 7.6rem;
+  left: 8.8rem;
+  z-index: 11;
+  width: 8.2rem;
+  height: 1rem;
+  background: repeating-linear-gradient(
+    108deg,
+    #b18a5b 0 0.38rem,
+    #775936 0.4rem 0.52rem
+  );
+  border: 1.5px solid var(--ink);
+  border-radius: 58% 42% 55% 45%;
+  box-shadow: 0 2px 0 rgb(47 58 56 / 18%);
+  transform: rotate(63deg);
+}
+
+.bridgeHelix span {
+  position: absolute;
+  top: -1rem;
+  left: 1.8rem;
+  width: 5rem;
+  font-family: var(--font-sans);
+  font-size: 0.42rem;
+  font-weight: 700;
+  color: rgb(47 58 56 / 73%);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  transform: rotate(-63deg);
+}
+
+.activeSite {
+  position: absolute;
+  z-index: 16;
+  display: grid;
+  min-width: 4.8rem;
+  height: 1.35rem;
+  place-items: center;
+  padding: 0 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.48rem;
+  font-weight: 800;
+  color: var(--paper-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  background: var(--cut);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 0 0 3px rgb(162 62 57 / 12%), 2px 3px 0 rgb(47 58 56 / 18%);
+  transform: scale(0.6);
+  transition: opacity 350ms ease, transform 400ms ease;
+}
+
+.hnhSite {
+  top: 5.65rem;
+  right: 4.7rem;
+}
+
+.ruvcSite {
+  right: 6rem;
+  bottom: 5.7rem;
+}
+
+/* Single-guide RNA */
+
+.guideRna {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 12;
+  width: 11.8rem;
+  height: 9.7rem;
+  opacity: 0;
+  filter: drop-shadow(0 0 2px var(--paper-light))
+    drop-shadow(1px 2px 0 rgb(47 58 56 / 37%));
+  transform: translate(-50%, -50%) scale(1.08) rotate(8deg);
+  transition: opacity 550ms ease, transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.rnaScaffold {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.6rem;
+  width: 5.2rem;
+  height: 6.4rem;
+  border: 0.33rem solid var(--rna);
+  border-right-color: transparent;
+  border-radius: 53% 26% 48% 35%;
+  transform: rotate(16deg);
+}
+
+.rnaScaffold::before,
+.rnaScaffold::after,
+.rnaScaffold i {
+  position: absolute;
+  content: "";
+  border: 0.25rem solid var(--rna);
+  border-radius: 50%;
+}
+
+.rnaScaffold::before {
+  inset: 0.85rem 0.6rem 1.45rem 0.9rem;
+}
+
+.rnaScaffold::after {
+  right: -1.3rem;
+  bottom: -0.9rem;
+  width: 2rem;
+  height: 2.8rem;
+}
+
+.rnaScaffold i:first-child {
+  top: -0.4rem;
+  right: -0.8rem;
+  width: 1.9rem;
+  height: 2.3rem;
+  border-left-color: transparent;
+}
+
+.rnaScaffold i:nth-child(2) {
+  bottom: -0.9rem;
+  left: -0.6rem;
+  width: 1.6rem;
+  height: 2.1rem;
+  border-top-color: transparent;
+}
+
+.rnaScaffold i:nth-child(3) {
+  top: 2rem;
+  right: -1.5rem;
+  width: 1.1rem;
+  height: 1.5rem;
+  border-bottom-color: transparent;
+}
+
+.rnaSpacer {
+  position: absolute;
+  right: 0.1rem;
+  bottom: 1.9rem;
+  display: flex;
+  width: 7.2rem;
+  justify-content: space-around;
+  transform: rotate(-4deg);
+  transform-origin: left;
+  transition: transform 700ms ease;
+}
+
+.rnaSpacer::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 0.3rem;
+  content: "";
+  background: var(--rna);
+  border: 1px solid rgb(47 58 56 / 45%);
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.rnaSpacer span {
+  z-index: 1;
+  width: 0.34rem;
+  height: 1rem;
+  background: #e49b70;
+  border: 1px solid rgb(47 58 56 / 48%);
+  border-radius: 999px;
+}
+
+.scaffoldLabel,
+.spacerLabel {
+  position: absolute;
+  font-family: var(--font-sans);
+  z-index: 20;
+  padding: 0.24rem 0.42rem;
+  font-size: 0.5rem;
+  font-weight: 800;
+  color: #7b3d22;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+  background: var(--paper-light);
+  border: 1px solid rgb(123 61 34 / 50%);
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 rgb(47 58 56 / 9%);
+}
+
+.scaffoldLabel {
+  top: -1.15rem;
+  left: -1rem;
+}
+
+.spacerLabel {
+  right: -0.6rem;
+  bottom: 0.05rem;
+}
+
+.figureNote {
+  position: absolute;
+  top: 10%;
+  right: 3%;
+  z-index: 18;
+  width: 8.5rem;
+  padding-bottom: 0.4rem;
+  font-family: var(--font-serif);
+  font-size: 0.66rem;
+  font-style: italic;
+  line-height: 1.3;
+  color: rgb(47 58 56 / 72%);
+  text-align: center;
+  opacity: 0;
+  border-bottom: 1px solid rgb(47 58 56 / 48%);
+  transform: rotate(-3deg) translateY(-0.5rem);
+  transition: opacity 400ms ease, transform 450ms ease;
+}
+
+.figureNote::after {
+  position: absolute;
+  right: 18%;
+  bottom: -1.6rem;
+  width: 2.8rem;
+  height: 1.6rem;
+  content: "";
+  border-right: 1px solid rgb(47 58 56 / 52%);
+  border-bottom: 1px solid rgb(47 58 56 / 52%);
+  border-radius: 0 0 100% 0;
+  transform: rotate(11deg);
+}
+
+.scanTrail {
+  position: absolute;
+  top: 40%;
+  left: 7%;
+  z-index: 5;
+  width: 78%;
+  height: 0.4rem;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 7px,
+    rgb(47 58 56 / 38%) 7px 11px
+  );
+  clip-path: polygon(0 45%, 92% 45%, 92% 0, 100% 50%, 92% 100%, 92% 55%, 0 55%);
+  transition: opacity 500ms ease;
+}
+
+/* Cellular repair outcome */
+
+.repairChoice {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 25;
+  display: flex;
+  width: min(92%, 29rem);
+  align-items: stretch;
+  gap: 0.7rem;
+  opacity: 0;
+  transform: translate(-50%, -42%) scale(0.94);
+  transition: opacity 450ms ease 150ms, transform 600ms ease 150ms;
+}
+
+.repairChoice div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 0.75rem;
+  text-align: center;
+  background: repeating-linear-gradient(
+      115deg,
+      transparent 0 9px,
+      rgb(47 58 56 / 5%) 9px 10px
+    ),
+    rgb(245 238 223 / 92%);
+  border: 1.5px solid rgb(47 58 56 / 62%);
+  border-radius: 0.6rem 0.8rem 0.55rem 0.75rem;
+  box-shadow: 3px 4px 0 rgb(47 58 56 / 12%);
+}
+
+.repairChoice span,
+.repairChoice strong,
+.repairChoice i {
+  font-family: var(--font-sans);
+}
+
+.repairChoice span {
+  font-size: 0.55rem;
+  color: rgb(47 58 56 / 65%);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.repairChoice strong {
+  font-size: 0.82rem;
+}
+
+.repairChoice i {
+  align-self: center;
+  font-size: 0.65rem;
+  color: rgb(47 58 56 / 52%);
+}
+
+/* Scroll states */
+
+.visual[data-stage="0"] .dna,
+.visual[data-stage="1"] .dna {
+  opacity: 0;
+  transform: translate(-24%, -50%) scaleX(0.72);
+}
+
+.visual[data-stage="0"] .cas9 {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.84) rotate(-1.5deg);
+}
+
+.visual[data-stage="0"] .domain {
+  filter: saturate(0.95);
+}
+
+.visual[data-stage="1"] .cas9 {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.86) rotate(-1deg);
+}
+
+.visual[data-stage="1"] .rec1 {
+  transform: translate(-0.35rem, -0.18rem) rotate(-10deg);
+}
+
+.visual[data-stage="1"] .rec2 {
+  transform: translateX(-0.45rem) rotate(8deg);
+}
+
+.visual[data-stage="1"] .hnhDomain,
+.visual[data-stage="1"] .piDomain {
+  transform: translateX(0.35rem) rotate(8deg);
+}
+
+.visual[data-stage="1"] .guideRna {
+  opacity: 1;
+  transform: translate(-50%, -48%) scale(0.9) rotate(1deg);
+}
+
+.visual[data-stage="2"] .cas9,
+.visual[data-stage="3"] .cas9,
+.visual[data-stage="4"] .cas9,
+.visual[data-stage="5"] .cas9 {
+  opacity: 0.94;
+  transform: translate(-56%, -50%) scale(0.72) rotate(-2deg);
+}
+
+.visual[data-stage="2"] .guideRna,
+.visual[data-stage="3"] .guideRna,
+.visual[data-stage="4"] .guideRna,
+.visual[data-stage="5"] .guideRna {
+  opacity: 1;
+  transform: translate(-57%, -47%) scale(0.76) rotate(-3deg);
+}
+
+.visual[data-stage="2"] .dna,
+.visual[data-stage="3"] .dna,
+.visual[data-stage="4"] .dna,
+.visual[data-stage="5"] .dna {
+  opacity: 1;
+  transform: translateY(-50%) scaleX(1);
+}
+
+.visual[data-stage="2"] .strandLabel,
+.visual[data-stage="3"] .strandLabel,
+.visual[data-stage="4"] .strandLabel,
+.visual[data-stage="5"] .strandLabel {
+  opacity: 1;
+}
+
+.visual[data-stage="3"] .pam,
+.visual[data-stage="4"] .pam,
+.visual[data-stage="5"] .pam {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.visual[data-stage="3"] .piDomain {
+  filter: saturate(1.28) brightness(1.04);
+  transform: rotate(-7deg) scale(1.05);
+}
+
+.visual[data-stage="3"] .scanTrail {
+  opacity: 1;
+}
+
+.visual[data-stage="4"] .topRail,
+.visual[data-stage="5"] .topRail {
+  transform: translateY(-1.15rem) rotate(-2deg);
+}
+
+.visual[data-stage="4"] .bottomRail,
+.visual[data-stage="5"] .bottomRail {
+  transform: translateY(1.15rem) rotate(2deg);
+}
+
+.visual[data-stage="4"] .basePairs span,
+.visual[data-stage="5"] .basePairs span {
+  height: 4.5rem;
+  opacity: 0.42;
+}
+
+.visual[data-stage="4"] .basePairs span:nth-child(-n + 8),
+.visual[data-stage="5"] .basePairs span:nth-child(-n + 8) {
+  opacity: 0.1;
+  transform: rotate(17deg);
+}
+
+.visual[data-stage="4"] .rnaSpacer,
+.visual[data-stage="5"] .rnaSpacer {
+  transform: translate(2.15rem, 1.35rem) rotate(0deg) scaleX(1.22);
+}
+
+.visual[data-stage="4"] .rec3 {
+  filter: saturate(1.25) brightness(1.06);
+  transform: rotate(4deg) scale(1.04);
+}
+
+.visual[data-stage="4"] .figureNote,
+.visual[data-stage="5"] .figureNote {
+  opacity: 1;
+  transform: rotate(-3deg) translateY(0);
+}
+
+.visual[data-stage="5"] .hnhDomain,
+.visual[data-stage="5"] .ruvcDomain {
+  filter: saturate(1.35) brightness(1.02);
+}
+
+.visual[data-stage="5"] .activeSite,
+.visual[data-stage="5"] .cutMarkA,
+.visual[data-stage="5"] .cutMarkB {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.visual[data-stage="5"] .cutMarkA,
+.visual[data-stage="5"] .cutMarkB {
+  transform: rotate(-54deg) scaleX(1);
+}
+
+.visual[data-stage="6"] .cas9,
+.visual[data-stage="6"] .guideRna,
+.visual[data-stage="6"] .dna,
+.visual[data-stage="6"] .pam {
+  opacity: 0.07;
+}
+
+.visual[data-stage="6"] .cas9 {
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+.visual[data-stage="6"] .guideRna {
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+.visual[data-stage="6"] .dna {
+  transform: translateY(-50%) scaleX(0.84);
+}
+
+.visual[data-stage="6"] .repairChoice {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Reading steps and stage navigation */
+
+.stageNav {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  padding-top: 0.9rem;
+}
+
+.stageNav button {
+  display: grid;
+  width: 2.1rem;
+  height: 1.4rem;
+  place-items: center;
+  border-radius: 999px;
+}
+
+.stageNav button span {
+  width: 1.4rem;
+  height: 2px;
+  background: hsl(var(--rule));
+  border-radius: 999px;
+  transition: width 250ms ease, background-color 250ms ease;
+}
+
+.stageNav button[aria-current="step"] span {
+  width: 1.9rem;
+  background: hsl(var(--accent-color));
+}
+
+.stageNav button:focus-visible {
+  outline: 2px solid hsl(var(--accent-color));
+  outline-offset: 2px;
+}
+
+.steps {
+  margin-top: -8vh;
+}
+
+.step {
+  display: flex;
+  min-height: 74vh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 0 3rem 1.25rem;
+  opacity: 0.28;
+  border-left: 1px solid hsl(var(--rule));
+  transition: opacity 350ms ease, border-color 350ms ease, transform 350ms ease;
+}
+
+.step:focus-visible {
+  outline: 2px solid hsl(var(--accent-color));
+  outline-offset: 0.75rem;
+}
+
+.step.activeStep {
+  opacity: 1;
+  border-left-color: hsl(var(--accent-color));
+  transform: translateX(0.35rem);
+}
+
+.stepEyebrow {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: hsl(var(--accent-color));
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.step h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.step > p:not(.stepEyebrow) {
+  margin: 1rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: hsl(var(--muted-foreground));
+}
+
+.stepDetail {
+  margin-top: 1.25rem;
+  padding-top: 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.69rem;
+  font-weight: 650;
+  color: hsl(var(--foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  border-top: 1px solid hsl(var(--rule));
+}
+
+@media (max-width: 850px) {
+  .orientation {
+    grid-template-columns: 1fr;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .visualColumn {
+    z-index: 30;
+    top: 4.25rem;
+  }
+
+  .visual {
+    min-height: min(54vh, 30rem);
+    border-radius: 0.75rem;
+  }
+
+  .molecularScene {
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+
+  .stageNav {
+    display: none;
+  }
+
+  .steps {
+    position: relative;
+    z-index: 40;
+    margin-top: 30vh;
+  }
+
+  .step {
+    min-height: 68vh;
+    margin-bottom: 24vh;
+    padding: 1.5rem;
+    opacity: 0.78;
+    background: hsl(var(--background) / 94%);
+    border: 1px solid hsl(var(--rule));
+    border-radius: 0.75rem;
+    box-shadow: 0 1rem 2.5rem hsl(var(--foreground) / 8%);
+    backdrop-filter: blur(10px);
+  }
+
+  .step.activeStep {
+    border-color: hsl(var(--accent-color) / 55%);
+    transform: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .walkthrough {
+    margin-top: 2rem;
+  }
+
+  .intro {
+    margin-bottom: 1.75rem;
+  }
+
+  .visual {
+    min-height: 25rem;
+  }
+
+  .molecularScene {
+    right: -3.8rem;
+    left: -3.8rem;
+    transform: scale(0.64);
+  }
+
+  .visualFooter {
+    gap: 0.48rem;
+    font-size: 0.43rem;
+  }
+
+  .steps {
+    margin-top: 24vh;
+  }
+
+  .step {
+    min-height: 62vh;
+    margin-bottom: 18vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .walkthrough *,
+  .walkthrough *::before,
+  .walkthrough *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
